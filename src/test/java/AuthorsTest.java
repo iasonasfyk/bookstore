@@ -17,8 +17,8 @@ public class AuthorsTest {
     private final String lastName = Constants.LAST_NAME_PREFIX + DateFormats.getCurrentDate();
 
 
-    @BeforeSuite(alwaysRun = true)
     @Parameters({"baseUrl"})
+    @BeforeSuite
     public void preConditions(String baseUrl) {
         url = baseUrl;
     }

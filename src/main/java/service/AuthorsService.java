@@ -43,7 +43,7 @@ public class AuthorsService {
     public AuthorConfig addAuthor(String baseUrl, AuthorConfig authorPayload) {
 
         RequestSpecification request =  UtilitiesClass.getRequestWithHeader().body(authorPayload);
-        Response response = request.post(baseUrl + Endpoint.AUTHORS.get(), authorPayload);
+        Response response = request.post(baseUrl + Endpoint.AUTHORS.get());
 
         if (!UtilitiesClass.isHttpResponseStatusCodeExpected(response)) {
             throw new AssertionError("Add author with payload = " + authorPayload.toString() + ",  failed with status code: " + response.getStatusCode());
@@ -55,7 +55,7 @@ public class AuthorsService {
     public AuthorConfig updateAuthor(String baseUrl, int id, AuthorConfig authorPayload) {
 
         RequestSpecification request =  UtilitiesClass.getRequestWithHeader().body(authorPayload);
-        Response response = request.put(baseUrl + Endpoint.AUTHORS.get() + "/" + id, authorPayload);
+        Response response = request.put(baseUrl + Endpoint.AUTHORS.get() + "/" + id);
 
         if (!UtilitiesClass.isHttpResponseStatusCodeExpected(response)) {
             throw new AssertionError("Update author with id = " + id + ",  failed with status code: " + response.getStatusCode());

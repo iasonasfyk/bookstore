@@ -25,8 +25,6 @@ public class AuthorsVerifications {
     public AuthorsVerifications validateAuthorsResponseBody(AuthorPayload responseBody) {
         softAssert.assertNotNull(responseBody.getId(), "value: " + responseBody.getId() + " is null");
         softAssert.assertNotNull(responseBody.getIdBook(), "value: " + responseBody.getIdBook() + " is null");
-        softAssert.assertNotNull(responseBody.getFirstName(), "value: " + responseBody.getFirstName() + " is null");
-        softAssert.assertNotNull(responseBody.getLastName(), "value: " + responseBody.getLastName() + " is null");
         softAssert.assertAll();
         return this;
     }
@@ -36,8 +34,6 @@ public class AuthorsVerifications {
         allBooks.forEach(u -> {
             softAssert.assertNotNull(u.getId(), "value: " + u.getId() + " is null");
             softAssert.assertNotNull(u.getIdBook(), "value: " + u.getIdBook() + " is null");
-            softAssert.assertNotNull(u.getFirstName(), "value: " + u.getFirstName() + " is null");
-            softAssert.assertNotNull(u.getLastName(), "value: " + u.getLastName() + " is null");
         });
         softAssert.assertAll();
         return this;

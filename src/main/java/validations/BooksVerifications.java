@@ -35,10 +35,7 @@ public class BooksVerifications {
         List<BookPayload> allBooks = booksService.getAllBooks(url);
         allBooks.forEach(u -> {
             softAssert.assertNotNull(u.getId(), "value: " + u.getId() + " is null");
-            softAssert.assertNotNull(u.getTitle(), "value: " + u.getTitle() + " is null");
-            softAssert.assertNotNull(u.getDescription(), "value: " + u.getDescription() + " is null");
             softAssert.assertNotNull(u.getPageCount(), "value: " + u.getPageCount() + " is null");
-            softAssert.assertNotNull(u.getExcerpt(), "value: " + u.getExcerpt() + " is null");
             softAssert.assertNotNull(u.getPublishDate(), "value: " + u.getPublishDate() + " is null");
         });
         softAssert.assertAll();

@@ -51,6 +51,8 @@ public class AuthorsHappyPathsTest {
 
         AuthorPayload authorPayload = AuthorPayload.builder()
                 .id(randomInt.nextInt(622))
+                .idBook(randomInt.nextInt(200))
+                .firstName(firstName)
                 .lastName(null)
                 .build();
 

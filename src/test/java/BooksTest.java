@@ -15,7 +15,7 @@ public class BooksTest {
     private String url;
 
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     @Parameters({"baseUrl"})
     public void preConditions(String baseUrl) {
         url = baseUrl;

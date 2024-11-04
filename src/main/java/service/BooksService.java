@@ -1,6 +1,5 @@
 package service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import common.enums.Endpoint;
 import common.utilities.UtilitiesClass;
 import configuration.BookConfig;

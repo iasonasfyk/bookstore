@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="All Test Suite" parallel="methods" thread-count="2">
+<suite name="Bookstore" parallel="true" thread-count="2">
 
     <parameter name="baseUrl" value="https://fakerestapi.azurewebsites.net/api/v1/"/>
 
     <test name="/Users/jason/Documents/Intelij/allwyn/Bookstore">
         <classes>
-<!--            <class name="BooksTest"/>-->
+            <class name="BooksTest"/>
             <class name="AuthorsTest"/>
         </classes>
     </test>

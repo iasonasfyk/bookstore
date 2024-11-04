@@ -12,9 +12,9 @@
     <test name="/Users/jason/Documents/Intelij/allwyn/Bookstore">
         <classes>
             <class name="BooksHappyPathsTest"/>
-<!--            <class name="AuthorsHappyPathsTest"/>-->
-<!--            <class name="BooksNegativeCasesTest"/>-->
-<!--            <class name="AuthorsNegativeCasesTest"/>-->
+            <class name="AuthorsHappyPathsTest"/>
+            <class name="BooksNegativeCasesTest"/>
+            <class name="AuthorsNegativeCasesTest"/>
         </classes>
     </test>
 

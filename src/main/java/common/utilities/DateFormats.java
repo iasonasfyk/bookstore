@@ -1,4 +1,4 @@
-package common.commonClasses;
+package common.utilities;
 
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;

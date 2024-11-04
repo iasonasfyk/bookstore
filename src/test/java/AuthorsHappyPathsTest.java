@@ -1,6 +1,6 @@
-import common.commonClasses.DateFormats;
+import common.utilities.DateFormats;
 import common.constants.Constants;
-import configuration.AuthorConfig;
+import payloads.AuthorPayload;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -8,7 +8,7 @@ import validations.AuthorsVerifications;
 
 import java.util.Random;
 
-public class AuthorsTestHappyPaths {
+public class AuthorsHappyPathsTest {
 
     private final AuthorsVerifications authorsVerifications = new AuthorsVerifications();
     private final Random randomInt = new Random();
@@ -36,10 +36,10 @@ public class AuthorsTestHappyPaths {
     @Test(alwaysRun = true, description = "Verify Author creation", dependsOnMethods = "testStep_2" )
     public void testStep_3() {
 
-        AuthorConfig authorPayload = AuthorConfig.builder()
-                .id(null)
+        AuthorPayload authorPayload = AuthorPayload.builder()
+                .id(623)
                 .idBook(randomInt.nextInt(200))
-                .firstName(firstName)
+                .firstName(null)
                 .lastName(lastName)
                 .build();
 
@@ -49,11 +49,9 @@ public class AuthorsTestHappyPaths {
     @Test(alwaysRun = true, description = "Verify Author update", dependsOnMethods = "testStep_3" )
     public void testStep_4() {
 
-        AuthorConfig authorPayload = AuthorConfig.builder()
+        AuthorPayload authorPayload = AuthorPayload.builder()
                 .id(randomInt.nextInt(622))
-                .idBook(randomInt.nextInt(200))
-                .firstName(firstName)
-                .lastName(lastName)
+                .lastName(null)
                 .build();
 
         authorsVerifications.verifyAuthorUpdate(url, authorPayload.getId(), authorPayload);

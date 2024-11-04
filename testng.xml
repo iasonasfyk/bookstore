@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Bookstore" parallel="true" thread-count="2">
+<suite name="Bookstore" parallel="classes" thread-count="4">
 
     <listeners>
         <listener class-name="core.TestNGListener" />
@@ -11,8 +11,10 @@
 
     <test name="/Users/jason/Documents/Intelij/allwyn/Bookstore">
         <classes>
-            <class name="BooksTestHappyPaths"/>
-            <class name="AuthorsTestHappyPaths"/>
+            <class name="BooksHappyPathsTest"/>
+<!--            <class name="AuthorsHappyPathsTest"/>-->
+<!--            <class name="BooksNegativeCasesTest"/>-->
+<!--            <class name="AuthorsNegativeCasesTest"/>-->
         </classes>
     </test>
 

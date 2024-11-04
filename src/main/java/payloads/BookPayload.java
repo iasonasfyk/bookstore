@@ -1,4 +1,4 @@
-package configuration;
+package payloads;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,7 +11,7 @@ import lombok.*;
 @JsonIgnoreProperties
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookConfig {
+public class BookPayload {
 
     @JsonProperty(SerializationProperties.ID)
     private Integer id;

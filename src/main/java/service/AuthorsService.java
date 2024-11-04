@@ -2,8 +2,7 @@ package service;
 
 import common.enums.Endpoint;
 import common.utilities.UtilitiesClass;
-import configuration.AuthorConfig;
-import configuration.BookConfig;
+import payloads.AuthorPayload;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -13,9 +12,9 @@ import java.util.List;
 
 public class AuthorsService {
 
-    public List<AuthorConfig> getAllAuthors(String baseUrl) {
+    public List<AuthorPayload> getAllAuthors(String baseUrl) {
 
-        List<AuthorConfig> authorsList = new ArrayList<>();
+        List<AuthorPayload> authorsList = new ArrayList<>();
 
         RequestSpecification request =  UtilitiesClass.getRequestWithHeader();
         Response response = request.get(baseUrl + Endpoint.AUTHORS.get());
@@ -24,12 +23,12 @@ public class AuthorsService {
             throw new AssertionError("Get all authors failed with status code: " + response.getStatusCode());
         }
         for (Object object : response.jsonPath().getList("")) {
-            authorsList.add(UtilitiesClass.deserialize(object, AuthorConfig.class));
+            authorsList.add(UtilitiesClass.deserialize(object, AuthorPayload.class));
         }
         return authorsList;
     }
 
-    public AuthorConfig getAuthorById(String baseUrl, int id) {
+    public AuthorPayload getAuthorById(String baseUrl, int id) {
 
         RequestSpecification request =  UtilitiesClass.getRequestWithHeader();
         Response response = request.get(baseUrl + Endpoint.AUTHORS.get() + "/" + id);
@@ -37,10 +36,10 @@ public class AuthorsService {
         if (!UtilitiesClass.isHttpResponseStatusCodeExpected(response)) {
             throw new AssertionError("Get author by id = " + id + ",  failed with status code: " + response.getStatusCode());
         }
-        return UtilitiesClass.deserialize(response.jsonPath().get(), AuthorConfig.class);
+        return UtilitiesClass.deserialize(response.jsonPath().get(), AuthorPayload.class);
     }
 
-    public AuthorConfig addAuthor(String baseUrl, AuthorConfig authorPayload) {
+    public AuthorPayload addAuthor(String baseUrl, AuthorPayload authorPayload) {
 
         RequestSpecification request =  UtilitiesClass.getRequestWithHeader().body(authorPayload);
         Response response = request.post(baseUrl + Endpoint.AUTHORS.get());
@@ -48,11 +47,11 @@ public class AuthorsService {
         if (!UtilitiesClass.isHttpResponseStatusCodeExpected(response)) {
             throw new AssertionError("Add author with payload = " + authorPayload.toString() + ",  failed with status code: " + response.getStatusCode());
         }
-        return UtilitiesClass.deserialize(response.jsonPath().get(), AuthorConfig.class);
+        return UtilitiesClass.deserialize(response.jsonPath().get(), AuthorPayload.class);
 
     }
 
-    public AuthorConfig updateAuthor(String baseUrl, int id, AuthorConfig authorPayload) {
+    public AuthorPayload updateAuthor(String baseUrl, int id, AuthorPayload authorPayload) {
 
         RequestSpecification request =  UtilitiesClass.getRequestWithHeader().body(authorPayload);
         Response response = request.put(baseUrl + Endpoint.AUTHORS.get() + "/" + id);
@@ -60,7 +59,7 @@ public class AuthorsService {
         if (!UtilitiesClass.isHttpResponseStatusCodeExpected(response)) {
             throw new AssertionError("Update author with id = " + id + ",  failed with status code: " + response.getStatusCode());
         }
-        return UtilitiesClass.deserialize(response.jsonPath().get(), AuthorConfig.class);
+        return UtilitiesClass.deserialize(response.jsonPath().get(), AuthorPayload.class);
     }
 
     public Response deleteAuthor(String baseUrl, int id) {

@@ -23,7 +23,7 @@ jobs:
 
     - name: Upload Extent HTML report
       uses: actions/upload-artifact@v3
-      if: ${{ GENERATE_REPORT == "true" }}
+      if: always()
       with:
         name: go-rest-report
         path: reports/extent/report_*.html

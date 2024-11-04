@@ -1,0 +1,10 @@
+service/AuthorsService.class
+common/enums/Endpoint.class
+configuration/AuthorConfig.class
+configuration/BookConfig.class
+service/BooksService.class
+configuration/BookConfig$BookConfigBuilder.class
+validations/AuthorsBO.class
+validations/BooksBO.class
+common/constants/SerializationProperties.class
+configuration/AuthorConfig$AuthorConfigBuilder.class

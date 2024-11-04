@@ -8,7 +8,7 @@ import validations.BooksVerifications;
 
 import java.util.Random;
 
-public class BooksTest {
+public class BooksTestHappyPaths {
 
     private final BooksVerifications booksVerifications = new BooksVerifications();
     protected Random randomInt = new Random();

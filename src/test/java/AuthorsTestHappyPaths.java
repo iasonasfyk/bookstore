@@ -8,7 +8,7 @@ import validations.AuthorsVerifications;
 
 import java.util.Random;
 
-public class AuthorsTest {
+public class AuthorsTestHappyPaths {
 
     private final AuthorsVerifications authorsVerifications = new AuthorsVerifications();
     private final Random randomInt = new Random();
@@ -37,7 +37,7 @@ public class AuthorsTest {
     public void testStep_3() {
 
         AuthorConfig authorPayload = AuthorConfig.builder()
-                .id(623)
+                .id(null)
                 .idBook(randomInt.nextInt(200))
                 .firstName(firstName)
                 .lastName(lastName)

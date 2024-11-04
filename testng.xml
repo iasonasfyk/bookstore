@@ -3,12 +3,16 @@
 
 <suite name="Bookstore" parallel="true" thread-count="2">
 
+    <listeners>
+        <listener class-name="core.TestNGListener" />
+    </listeners>
+
     <parameter name="baseUrl" value="https://fakerestapi.azurewebsites.net/api/v1/"/>
 
     <test name="/Users/jason/Documents/Intelij/allwyn/Bookstore">
         <classes>
-            <class name="BooksTest"/>
-            <class name="AuthorsTest"/>
+            <class name="BooksTestHappyPaths"/>
+            <class name="AuthorsTestHappyPaths"/>
         </classes>
     </test>
 

@@ -37,7 +37,7 @@ public class BooksHappyPathsTest {
 
     @Test(alwaysRun = true, description = "Verify Book update", dependsOnMethods = "testStep_3" )
     public void testStep_4() {
-        BookPayload bookPayloadForBookUpdate = booksBO.buildBookPayloadForBookUpdate();
+        BookPayload bookPayloadForBookUpdate = booksBO.buildBookPayloadWithNullTitleDescriptionExcerpt();
         booksVerifications.verifyBookUpdate(url, bookPayloadForBookUpdate.getId(), bookPayloadForBookUpdate);
     }
 

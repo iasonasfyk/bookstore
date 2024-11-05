@@ -9,6 +9,9 @@ public class AuthorsBO {
     private final String firstName = Constants.FIRST_NAME_PREFIX + DateFormats.getCurrentDate();
     private final String lastName = Constants.LAST_NAME_PREFIX + DateFormats.getCurrentDate();
 
+    /**
+     * Build Author Payload with null First Name
+     */
     public AuthorPayload buildAuthorPayloadWithNullFirstName() {
         return AuthorPayload.builder()
                 .id(623)
@@ -18,6 +21,9 @@ public class AuthorsBO {
                 .build();
     }
 
+    /**
+     * Build Author Payload with null Last Name
+     */
     public AuthorPayload buildAuthorPayloadWithNullLastName() {
         return AuthorPayload.builder()
                 .id(RandomGenerator.generateRandomIntegerGivenTopBound(622))
@@ -27,6 +33,9 @@ public class AuthorsBO {
                 .build();
     }
 
+    /**
+     * Build Author Payload with null Author id
+     */
     public AuthorPayload buildAuthorsPayloadWithNullAuthorId() {
         return AuthorPayload.builder()
                 .id(null)
@@ -36,6 +45,9 @@ public class AuthorsBO {
                 .build();
     }
 
+    /**
+     * Build Author Payload with default values in all fields
+     */
     public AuthorPayload buildDefaultAuthorsPayload() {
         return AuthorPayload.builder()
                 .id(RandomGenerator.generateRandomIntegerGivenTopBound(622))

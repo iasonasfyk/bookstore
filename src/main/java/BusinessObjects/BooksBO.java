@@ -2,34 +2,42 @@ package BusinessObjects;
 
 import common.constants.Constants;
 import common.utilities.DateFormats;
-import java.util.Random;
+import common.utilities.RandomGenerator;
 import payloads.BookPayload;
 
 public class BooksBO {
-    protected Random randomInt  = new Random();;
 
+    /**
+     * Build Book Payload with default values in all fields
+     */
     public BookPayload buildDefaultBookPayload() {
         return BookPayload.builder()
                 .id(201)
                 .title(Constants.BOOK_PREFIX + DateFormats.getCurrentDate())
                 .description(Constants.DESCRIPTION_PREFIX + DateFormats.getCurrentDate())
-                .pageCount(randomInt.nextInt(1000))
+                .pageCount(RandomGenerator.generateRandomIntegerGivenTopBound(1000))
                 .excerpt(Constants.EXCERPT_PREFIX + DateFormats.getCurrentDate())
                 .publishDate(DateFormats.getCurrentDateInPayloadFormattedForm())
                 .build();
     }
 
-    public BookPayload buildBookPayloadForBookUpdate() {
+    /**
+     * Build Book Payload with null title, description and excerpt
+     */
+    public BookPayload buildBookPayloadWithNullTitleDescriptionExcerpt() {
         return BookPayload.builder()
-                .id(randomInt.nextInt(200))
+                .id(RandomGenerator.generateRandomIntegerGivenTopBound(200))
                 .title(null)
                 .description(null)
-                .pageCount(randomInt.nextInt(1000))
+                .pageCount(RandomGenerator.generateRandomIntegerGivenTopBound(1000))
                 .excerpt(null)
                 .publishDate(DateFormats.getCurrentDateInPayloadFormattedForm())
                 .build();
     }
 
+    /**
+     * Build Book Payload with null pageCount
+     */
     public BookPayload buildBookPayloadWithNullPageCount() {
         return BookPayload.builder()
                 .id(201)
@@ -41,12 +49,15 @@ public class BooksBO {
                 .build();
     }
 
+    /**
+     * Build Book Payload with wrong date format
+     */
     public BookPayload buildBookPayloadWithWrongDateFormat() {
         return BookPayload.builder()
-                .id(randomInt.nextInt(200))
+                .id(RandomGenerator.generateRandomIntegerGivenTopBound(200))
                 .title(Constants.BOOK_PREFIX + DateFormats.getCurrentDate())
                 .description(Constants.DESCRIPTION_PREFIX + DateFormats.getCurrentDate())
-                .pageCount(randomInt.nextInt(1000))
+                .pageCount(RandomGenerator.generateRandomIntegerGivenTopBound(1000))
                 .excerpt(Constants.EXCERPT_PREFIX + DateFormats.getCurrentDate())
                 .publishDate(DateFormats.getCurrentDate())
                 .build();

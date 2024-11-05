@@ -43,7 +43,7 @@ public class BooksNegativeCasesTest {
 
     @Test(alwaysRun = true, description = "Verify Book deletion error with wrong url", dependsOnMethods = "testStep_4" )
     public void testStep_5() {
-        booksVerifications.verifyBookDeletionError(url + "/0", RandomGenerator.generateRandomIntegerGivenTopBound(200));
+        booksVerifications.verifyBookDeletionError(url + "/0", RandomGenerator.generateRandomIntGivenTopBound(200));
     }
 
 }

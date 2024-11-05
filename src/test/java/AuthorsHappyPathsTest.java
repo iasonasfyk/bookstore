@@ -25,7 +25,7 @@ public class AuthorsHappyPathsTest {
 
     @Test(alwaysRun = true, description = "Verify get Author By Id response", dependsOnMethods = "testStep_1")
     public void testStep_2() {
-        authorsVerifications.verifyAuthorById(url, RandomGenerator.generateRandomIntegerGivenTopBound(622));
+        authorsVerifications.verifyAuthorById(url, RandomGenerator.generateRandomIntGivenTopBound(622));
     }
 
     @Test(alwaysRun = true, description = "Verify Author creation", dependsOnMethods = "testStep_2" )
@@ -42,7 +42,7 @@ public class AuthorsHappyPathsTest {
 
     @Test(alwaysRun = true, description = "Verify Author deletion", dependsOnMethods = "testStep_4" )
     public void testStep_5() {
-        authorsVerifications.verifyAuthorDeletion(url, RandomGenerator.generateRandomIntegerGivenTopBound(622));
+        authorsVerifications.verifyAuthorDeletion(url, RandomGenerator.generateRandomIntGivenTopBound(622));
     }
 
 }

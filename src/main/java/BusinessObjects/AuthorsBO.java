@@ -15,7 +15,7 @@ public class AuthorsBO {
     public AuthorPayload buildAuthorPayloadWithNullFirstName() {
         return AuthorPayload.builder()
                 .id(623)
-                .idBook(RandomGenerator.generateRandomIntegerGivenTopBound(200))
+                .idBook(RandomGenerator.generateRandomIntGivenTopBound(200))
                 .firstName(null)
                 .lastName(lastName)
                 .build();
@@ -26,8 +26,8 @@ public class AuthorsBO {
      */
     public AuthorPayload buildAuthorPayloadWithNullLastName() {
         return AuthorPayload.builder()
-                .id(RandomGenerator.generateRandomIntegerGivenTopBound(622))
-                .idBook(RandomGenerator.generateRandomIntegerGivenTopBound(200))
+                .id(RandomGenerator.generateRandomIntGivenTopBound(622))
+                .idBook(RandomGenerator.generateRandomIntGivenTopBound(200))
                 .firstName(firstName)
                 .lastName(null)
                 .build();
@@ -39,7 +39,7 @@ public class AuthorsBO {
     public AuthorPayload buildAuthorsPayloadWithNullAuthorId() {
         return AuthorPayload.builder()
                 .id(null)
-                .idBook(RandomGenerator.generateRandomIntegerGivenTopBound(200))
+                .idBook(RandomGenerator.generateRandomIntGivenTopBound(200))
                 .firstName(firstName)
                 .lastName(lastName)
                 .build();
@@ -50,7 +50,7 @@ public class AuthorsBO {
      */
     public AuthorPayload buildDefaultAuthorsPayload() {
         return AuthorPayload.builder()
-                .id(RandomGenerator.generateRandomIntegerGivenTopBound(622))
+                .id(RandomGenerator.generateRandomIntGivenTopBound(622))
                 .firstName(firstName)
                 .lastName(lastName)
                 .build();

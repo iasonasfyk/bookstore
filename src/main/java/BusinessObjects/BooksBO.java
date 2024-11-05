@@ -15,7 +15,7 @@ public class BooksBO {
                 .id(201)
                 .title(Constants.BOOK_PREFIX + DateFormats.getCurrentDate())
                 .description(Constants.DESCRIPTION_PREFIX + DateFormats.getCurrentDate())
-                .pageCount(RandomGenerator.generateRandomIntegerGivenTopBound(1000))
+                .pageCount(RandomGenerator.generateRandomIntGivenTopBound(1000))
                 .excerpt(Constants.EXCERPT_PREFIX + DateFormats.getCurrentDate())
                 .publishDate(DateFormats.getCurrentDateInPayloadFormattedForm())
                 .build();
@@ -26,10 +26,10 @@ public class BooksBO {
      */
     public BookPayload buildBookPayloadWithNullTitleDescriptionExcerpt() {
         return BookPayload.builder()
-                .id(RandomGenerator.generateRandomIntegerGivenTopBound(200))
+                .id(RandomGenerator.generateRandomIntGivenTopBound(200))
                 .title(null)
                 .description(null)
-                .pageCount(RandomGenerator.generateRandomIntegerGivenTopBound(1000))
+                .pageCount(RandomGenerator.generateRandomIntGivenTopBound(1000))
                 .excerpt(null)
                 .publishDate(DateFormats.getCurrentDateInPayloadFormattedForm())
                 .build();
@@ -54,10 +54,10 @@ public class BooksBO {
      */
     public BookPayload buildBookPayloadWithWrongDateFormat() {
         return BookPayload.builder()
-                .id(RandomGenerator.generateRandomIntegerGivenTopBound(200))
+                .id(RandomGenerator.generateRandomIntGivenTopBound(200))
                 .title(Constants.BOOK_PREFIX + DateFormats.getCurrentDate())
                 .description(Constants.DESCRIPTION_PREFIX + DateFormats.getCurrentDate())
-                .pageCount(RandomGenerator.generateRandomIntegerGivenTopBound(1000))
+                .pageCount(RandomGenerator.generateRandomIntGivenTopBound(1000))
                 .excerpt(Constants.EXCERPT_PREFIX + DateFormats.getCurrentDate())
                 .publishDate(DateFormats.getCurrentDate())
                 .build();

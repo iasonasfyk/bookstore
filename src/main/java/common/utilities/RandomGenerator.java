@@ -6,7 +6,7 @@ public class RandomGenerator {
 
     protected static Random randomInt = new Random();
 
-    public static Integer generateRandomIntegerGivenTopBound(int bound) {
+    public static int generateRandomIntGivenTopBound(int bound) {
         return randomInt.nextInt(bound);
     }
 }

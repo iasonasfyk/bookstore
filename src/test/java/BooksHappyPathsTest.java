@@ -26,7 +26,7 @@ public class BooksHappyPathsTest {
 
     @Test(alwaysRun = true, description = "Verify get Book By Id response", dependsOnMethods = "testStep_1")
     public void testStep_2() {
-        booksVerifications.verifyBookById(url, RandomGenerator.generateRandomIntegerGivenTopBound(200));
+        booksVerifications.verifyBookById(url, RandomGenerator.generateRandomIntGivenTopBound(200));
     }
 
     @Test(alwaysRun = true, description = "Verify Book creation", dependsOnMethods = "testStep_2" )
@@ -43,7 +43,7 @@ public class BooksHappyPathsTest {
 
     @Test(alwaysRun = true, description = "Verify Book deletion", dependsOnMethods = "testStep_4" )
     public void testStep_5() {
-        booksVerifications.verifyBookDeletion(url, RandomGenerator.generateRandomIntegerGivenTopBound(200));
+        booksVerifications.verifyBookDeletion(url, RandomGenerator.generateRandomIntGivenTopBound(200));
     }
 
 }

@@ -43,7 +43,7 @@ public class AuthorsNegativeCasesTest {
 
     @Test(alwaysRun = true, description = "Verify Author deletion error with wrong url", dependsOnMethods = "testStep_4" )
     public void testStep_5() {
-        authorsVerifications.verifyAuthorDeletionError(url + "/1", RandomGenerator.generateRandomIntegerGivenTopBound(622));
+        authorsVerifications.verifyAuthorDeletionError(url + "/1", RandomGenerator.generateRandomIntGivenTopBound(622));
     }
 
 }

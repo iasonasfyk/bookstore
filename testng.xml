@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Bookstore" parallel="classes" thread-count="4">
-
-    <listeners>
-        <listener class-name="core.TestNGListener" />
-    </listeners>
+<suite name="Bookstore" parallel="classes" verbose="10" thread-count="4">
 
     <parameter name="baseUrl" value="https://fakerestapi.azurewebsites.net/api/v1/"/>
 

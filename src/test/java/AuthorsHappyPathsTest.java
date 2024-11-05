@@ -30,15 +30,14 @@ public class AuthorsHappyPathsTest {
 
     @Test(alwaysRun = true, description = "Verify Author creation", dependsOnMethods = "testStep_2" )
     public void testStep_3() {
-        AuthorPayload buildAuthorPayloadWithNullFirstName = authorsBO.buildAuthorPayloadWithNullFirstName();
-
-        authorsVerifications.verifyAuthorCreation(url, buildAuthorPayloadWithNullFirstName);
+        AuthorPayload authorPayloadWithNullFirstName = authorsBO.buildAuthorPayloadWithNullFirstName();
+        authorsVerifications.verifyAuthorCreation(url, authorPayloadWithNullFirstName);
     }
 
     @Test(alwaysRun = true, description = "Verify Author update", dependsOnMethods = "testStep_3" )
     public void testStep_4() {
-        AuthorPayload buildAuthorPayloadWithNullLastName = authorsBO.buildAuthorPayloadWithNullLastName();
-        authorsVerifications.verifyAuthorUpdate(url, buildAuthorPayloadWithNullLastName.getId(), buildAuthorPayloadWithNullLastName);
+        AuthorPayload authorPayloadWithNullLastName = authorsBO.buildAuthorPayloadWithNullLastName();
+        authorsVerifications.verifyAuthorUpdate(url, authorPayloadWithNullLastName.getId(), authorPayloadWithNullLastName);
     }
 
     @Test(alwaysRun = true, description = "Verify Author deletion", dependsOnMethods = "testStep_4" )

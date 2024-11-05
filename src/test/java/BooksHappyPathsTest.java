@@ -31,14 +31,14 @@ public class BooksHappyPathsTest {
 
     @Test(alwaysRun = true, description = "Verify Book creation", dependsOnMethods = "testStep_2" )
     public void testStep_3() {
-        BookPayload bookPayload = booksBO.buildDefaultBookPayload();
-        booksVerifications.verifyBookCreation(url, bookPayload);
+        BookPayload defaultBookPayload = booksBO.buildDefaultBookPayload();
+        booksVerifications.verifyBookCreation(url, defaultBookPayload);
     }
 
     @Test(alwaysRun = true, description = "Verify Book update", dependsOnMethods = "testStep_3" )
     public void testStep_4() {
-        BookPayload bookPayload = booksBO.buildBookPayloadForBookUpdate();
-        booksVerifications.verifyBookUpdate(url, bookPayload.getId(), bookPayload);
+        BookPayload bookPayloadForBookUpdate = booksBO.buildBookPayloadForBookUpdate();
+        booksVerifications.verifyBookUpdate(url, bookPayloadForBookUpdate.getId(), bookPayloadForBookUpdate);
     }
 
     @Test(alwaysRun = true, description = "Verify Book deletion", dependsOnMethods = "testStep_4" )

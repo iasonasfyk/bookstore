@@ -21,9 +21,18 @@ jobs:
     - name: Run test suite
       run: mvn clean test
 
-    - name: Upload Extent HTML report
-      uses: actions/upload-artifact@v3
+    - name: Build test report
+      uses: simple-elf/allure-report-action@v1.7
       if: always()
       with:
-        name: go-rest-report
-        path: reports/extent/report_*.html
+        gh_pages: main
+        allure_history: allure-history
+        allure_results: build/allure-results
+
+    - name: Publish test report
+      uses: peaceiris/actions-gh-pages@v3
+      if: always()
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: main
+        publish_dir: allure-history

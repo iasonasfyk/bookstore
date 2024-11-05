@@ -1,21 +1,16 @@
-import common.utilities.DateFormats;
-import common.constants.Constants;
+import BusinessObjects.AuthorsBO;
+import common.utilities.RandomGenerator;
 import payloads.AuthorPayload;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import validations.AuthorsVerifications;
 
-import java.util.Random;
-
 public class AuthorsHappyPathsTest {
 
     private final AuthorsVerifications authorsVerifications = new AuthorsVerifications();
-    private final Random randomInt = new Random();
+    private final AuthorsBO authorsBO = new AuthorsBO();
     private String url;
-    private final String firstName = Constants.FIRST_NAME_PREFIX + DateFormats.getCurrentDate();
-    private final String lastName = Constants.LAST_NAME_PREFIX + DateFormats.getCurrentDate();
-
 
     @BeforeSuite(alwaysRun = true)
     @Parameters({"baseUrl"})
@@ -30,38 +25,25 @@ public class AuthorsHappyPathsTest {
 
     @Test(alwaysRun = true, description = "Verify get Author By Id response", dependsOnMethods = "testStep_1")
     public void testStep_2() {
-        authorsVerifications.verifyAuthorById(url, randomInt.nextInt(622));
+        authorsVerifications.verifyAuthorById(url, RandomGenerator.generateRandomIntegerGivenTopBound(622));
     }
 
     @Test(alwaysRun = true, description = "Verify Author creation", dependsOnMethods = "testStep_2" )
     public void testStep_3() {
+        AuthorPayload buildAuthorPayloadWithNullFirstName = authorsBO.buildAuthorPayloadWithNullFirstName();
 
-        AuthorPayload authorPayload = AuthorPayload.builder()
-                .id(623)
-                .idBook(randomInt.nextInt(200))
-                .firstName(null)
-                .lastName(lastName)
-                .build();
-
-        authorsVerifications.verifyAuthorCreation(url, authorPayload);
+        authorsVerifications.verifyAuthorCreation(url, buildAuthorPayloadWithNullFirstName);
     }
 
     @Test(alwaysRun = true, description = "Verify Author update", dependsOnMethods = "testStep_3" )
     public void testStep_4() {
-
-        AuthorPayload authorPayload = AuthorPayload.builder()
-                .id(randomInt.nextInt(622))
-                .idBook(randomInt.nextInt(200))
-                .firstName(firstName)
-                .lastName(null)
-                .build();
-
-        authorsVerifications.verifyAuthorUpdate(url, authorPayload.getId(), authorPayload);
+        AuthorPayload buildAuthorPayloadWithNullLastName = authorsBO.buildAuthorPayloadWithNullLastName();
+        authorsVerifications.verifyAuthorUpdate(url, buildAuthorPayloadWithNullLastName.getId(), buildAuthorPayloadWithNullLastName);
     }
 
     @Test(alwaysRun = true, description = "Verify Author deletion", dependsOnMethods = "testStep_4" )
     public void testStep_5() {
-        authorsVerifications.verifyAuthorDeletion(url, randomInt.nextInt(622));
+        authorsVerifications.verifyAuthorDeletion(url, RandomGenerator.generateRandomIntegerGivenTopBound(622));
     }
 
 }

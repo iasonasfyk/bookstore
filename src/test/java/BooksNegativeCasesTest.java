@@ -1,17 +1,15 @@
-import common.constants.Constants;
-import common.utilities.DateFormats;
+import BusinessObjects.BooksBO;
+import common.utilities.RandomGenerator;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import payloads.BookPayload;
 import validations.BooksVerifications;
 
-import java.util.Random;
-
 public class BooksNegativeCasesTest {
 
     private final BooksVerifications booksVerifications = new BooksVerifications();
-    protected Random randomInt = new Random();
+    private final BooksBO booksBO = new BooksBO();
     private String url;
 
 
@@ -33,37 +31,19 @@ public class BooksNegativeCasesTest {
 
     @Test(alwaysRun = true, description = "Verify Book creation error with null page count", dependsOnMethods = "testStep_2" )
     public void testStep_3() {
-
-        BookPayload bookPayload = BookPayload.builder()
-                .id(201)
-                .title(Constants.BOOK_PREFIX + DateFormats.getCurrentDate())
-                .description(Constants.DESCRIPTION_PREFIX + DateFormats.getCurrentDate())
-                .pageCount(null)
-                .excerpt(Constants.EXCERPT_PREFIX + DateFormats.getCurrentDate())
-                .publishDate(DateFormats.getCurrentDateInPayloadFormattedForm())
-                .build();
-
-        booksVerifications.verifyBookCreationError(url, bookPayload);
+        BookPayload bookPayloadWithNullPageCount = booksBO.buildBookPayloadWithNullPageCount();
+        booksVerifications.verifyBookCreationError(url, bookPayloadWithNullPageCount);
     }
 
     @Test(alwaysRun = true, description = "Verify Book update error with wrong date format", dependsOnMethods = "testStep_3" )
     public void testStep_4() {
-
-        BookPayload bookPayload = BookPayload.builder()
-                .id(randomInt.nextInt(200))
-                .title(Constants.BOOK_PREFIX + DateFormats.getCurrentDate())
-                .description(Constants.DESCRIPTION_PREFIX + DateFormats.getCurrentDate())
-                .pageCount(randomInt.nextInt(1000))
-                .excerpt(Constants.EXCERPT_PREFIX + DateFormats.getCurrentDate())
-                .publishDate(DateFormats.getCurrentDate())
-                .build();
-
-        booksVerifications.verifyBookUpdateError(url, bookPayload.getId(), bookPayload);
+        BookPayload bookPayloadWithWrongDateFormat = booksBO.buildBookPayloadWithWrongDateFormat();
+        booksVerifications.verifyBookUpdateError(url, bookPayloadWithWrongDateFormat.getId(), bookPayloadWithWrongDateFormat);
     }
 
     @Test(alwaysRun = true, description = "Verify Book deletion error with wrong url", dependsOnMethods = "testStep_4" )
     public void testStep_5() {
-        booksVerifications.verifyBookDeletionError(url + "/0", randomInt.nextInt(200));
+        booksVerifications.verifyBookDeletionError(url + "/0", RandomGenerator.generateRandomIntegerGivenTopBound(200));
     }
 
 }

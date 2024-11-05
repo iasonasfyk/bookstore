@@ -36,4 +36,6 @@ public class UtilitiesClass {
     public static boolean isHttpResponseStatusCodeExpected(Response response) {
         return response.getStatusCode() == 200;
     }
+
+
 }
